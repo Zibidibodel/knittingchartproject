@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+#grids {
+    width: 100%;
+    background-color: yellow;
+    text-align: center;
+}
+
+#current  p{
+    background-color: red;
+    display: inline-block;
+}
+
+#last p{
+    background-color: blue;
+    display: inline-block;
+}
+
+#next p{
+    background-color: green;
+    display: inline-block;
+}
+
+#nav {
+    float: none;
+    text-align: center;
+    width: 100%;
+}
+
+#rowCount {
+    float: left;
+}
+
+#nav img {
+    margin: 0.1% 1%;
+}
+
+#translation {
+    text-align: center;
+}
+
+#translation p {
+    font-size: 3em;
+    font-family: sans-serif;
+    clear: both;
+}
