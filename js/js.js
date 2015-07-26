@@ -1,5 +1,5 @@
 //defining variables
-var testValues = [["k","k2tog","k","yo","rs","yo","k2tog","k","k","k","k","k","yo","re","k2tog","yo","k2tog","yo"],["k","k","yo","k","rs","yo","k","k","k","k","k","k","yo","re","k2tog","yo","k2tog","yo"],["k","k","k","k","rs","yo","k2tog","k","k","k","k","k","yo","re","k2tog","yo","k2tog","yo"],["k","k","k","k","rs","k","k2tog","k","k","k","k","yo","yo","re","k2tog","yo","k2tog","yo"],["k","k","k","k","rs","yo","k2tog","k","k2tog","k","k","k2tog","yo","re","k2tog","yo","k2tog","yo"]];
+var testValues = [["k3tog","k2tog","p2tog","yo","rs","yo","k2tog","k","k","ns","ssk","ssp","p2tog","re","k2tog","yo","sk2p","yo"],["k","k","yo","k","rs","yo","k","k","k","k","k","k","yo","re","k2tog","yo","k2tog","yo"],["k","k","k","k","rs","yo","k2tog","k","k","k","k","k","yo","re","k2tog","yo","k2tog","yo"],["k","k","k","k","rs","k","k2tog","k","k","k","k","yo","yo","re","k2tog","yo","k2tog","yo"],["k","k","k","k","rs","yo","k2tog","k","k2tog","k","k","k2tog","yo","re","k2tog","yo","k2tog","yo"]];
 var emptyArray = ["empty","empty","empty","empty","empty",'empty',"empty","empty",'empty','empty',"empty","empty","empty","empty","empty",'empty',"empty","empty",'empty','empty'];
 var width = $(window).width();
     
@@ -18,7 +18,7 @@ var currentWidth = width * 0.9;
 //Jquery function for adding a paragraph with designated input for creating the rows
 (function( $ ){
    $.fn.addP = function(value) {
-      this.append('<p><img src = "img/stitches/' + value + '.gif"/> </p>');
+      this.append('<img src = "img/stitches/' + value + '.png"/>');
    }; 
 })( jQuery );
 
@@ -28,24 +28,24 @@ function drawLast() {
     for (var i = 0; i < countLast; i++) {
         $('#last').addP(last[i]);
     }
-    $('#last p img').css('height', (nonCurrentWidth / countLast)*.96);
-    $('#last p img').css('width', (nonCurrentWidth / countLast)*.96);
+    $('#last img').css('height', (nonCurrentWidth / countLast)*.96);
+    $('#last img').css('width', (nonCurrentWidth / countLast)*.96);
 };
 function drawCurrent() {
     $('#current').empty()
     for (var i = 0; i < countCurrent; i++) {
         $('#current').addP(current[i]);
     }
-    $('#current p img').css('height', (currentWidth / countCurrent)*.96);
-    $('#current p img').css('width', (currentWidth / countCurrent)*.96);
+    $('#current img').css('height', (currentWidth / countCurrent)*.96);
+    $('#current img').css('width', (currentWidth / countCurrent)*.96);
 }
 function drawNext() {
     $('#next').empty()
     for (var i = 0; i < countNext; i++) {
         $('#next').addP(next[i]);
     }
-    $('#next p img').css('height', (nonCurrentWidth / countNext)*.96);
-    $('#next p img').css('width', (nonCurrentWidth / countNext)*.96);
+    $('#next img').css('height', (nonCurrentWidth / countNext)*.96);
+    $('#next img').css('width', (nonCurrentWidth / countNext)*.96);
 }
 
 //function that moves the current row through the list of variables "amount" passed in by action functions
@@ -90,6 +90,16 @@ function moveFocus(amount) {
     $('#rowCount').text(currentRow);
 }
 
+$(window).resize(function(){
+
+    $('.centered').css({
+        position:'absolute',
+        top: ($(window).height() - $('.centered').outerHeight())/2,
+        width: '100%'
+    });
+
+});
+
 //first load drawings
 $(document).ready(function(){
     //drawing the grids and sizing them appropriately
@@ -103,9 +113,11 @@ $(document).ready(function(){
     $('#rowCount').css('margin-top', 0 - (width / 14));
     
     //placing the nav buttons
-    $('#nav img').css('height', width / 14);
-    $('#nav img').css('width', width / 14);
+    $('#nav img').css('height', width / 17);
+    $('#nav img').css('width', width / 17);
     $('#rowCount').text(currentRow);
+    
+    $(window).resize();
 });
 
 //when somenoe clicks on the "fwd" image, it moves the current row forward 1
