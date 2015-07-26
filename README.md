@@ -11,3 +11,6 @@ Key for filling out patterns:
 
 ![(k2tog) Knit 2 Together](img/stitches/k.gif): (k2tog) Knit 2 Together
 
+![rs](img/stitches/rs.gif): (rs) Start Repeat Section
+
+![re](img/stitches/re.gif): (re) End Repeat Section
