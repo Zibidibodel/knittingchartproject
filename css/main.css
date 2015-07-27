@@ -13,20 +13,21 @@ body {
 
 #current  img{
     display: inline-block;
-    background-color: #E6E6E6;
     margin-top: 1.25em;
 }
 
 #last img{
     display: inline-block;
-    background-color: #E6E6E6;
     margin-top: 1.25em;
 }
 
 #next img{
     display: inline-block;
-    background-color: #E6E6E6;
     margin-top: 1.25em;
+}
+
+img {
+    background-color: #E6E6E6;
 }
 
 #nav {
@@ -37,6 +38,10 @@ body {
 
 #rowCount {
     float: left;
+    background-color: #E6E6E6;
+    text-align: center;
+    border-color: #000;
+    border-style: solid;
 }
 
 #nav img {
@@ -52,4 +57,8 @@ body {
     font-size: 3em;
     font-family: sans-serif;
     clear: both;
+}
+
+.empty img {
+    background-color: #EBC299;
 }

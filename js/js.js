@@ -15,7 +15,7 @@ var countNext = next.length;
 var nonCurrentWidth = width * 0.7;      //defining the max widths of the individual rows
 var currentWidth = width * 0.9;
 
-//Jquery function for adding a paragraph with designated input for creating the rows
+//Jquery function for adding a image with designated input for creating the rows
 (function( $ ){
    $.fn.addP = function(value) {
       this.append('<img src = "img/stitches/' + value + '.png"/>');
@@ -25,6 +25,11 @@ var currentWidth = width * 0.9;
 //Drawing the three grids, "Last, Current, and Next"
 function drawLast() {
     $('#last').empty()
+    if(last[0] === "empty") {
+        $('#last').addClass("empty");
+    }   else {
+        if ($('#last').hasClass('empty')) $('#last').removeClass('empty');
+    }
     for (var i = 0; i < countLast; i++) {
         $('#last').addP(last[i]);
     }
@@ -41,6 +46,11 @@ function drawCurrent() {
 }
 function drawNext() {
     $('#next').empty()
+    if(next[0] === "empty") {
+        $('#next').addClass("empty");
+    }   else {
+        if ($('#next').hasClass('empty')) $('#next').removeClass('empty');
+    }
     for (var i = 0; i < countNext; i++) {
         $('#next').addP(next[i]);
     }
@@ -111,6 +121,8 @@ $(document).ready(function(){
     $('#rowCount').css('height', width / 10);
     $('#rowCount').css('width', width / 10);
     $('#rowCount').css('margin-top', 0 - (width / 14));
+    $('#rowCount').css('margin-left', width / 20);
+    $('#rowCount').css('font-size', width / 10);
     
     //placing the nav buttons
     $('#nav img').css('height', width / 17);
