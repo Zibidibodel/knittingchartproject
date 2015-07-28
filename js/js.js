@@ -2,6 +2,12 @@
 var testValues = [{row: ["k3tog","k2tog","p2tog","yo","rs","yo","k2tog","k","k","ns","ssk","ssp","p2tog","re","k2tog","yo","sk2p","yo"], inst: "Green blue stuff"},{row: ["k","k","yo","k","rs","yo","k","k","k","k","k","k","yo","re","k2tog","yo","k2tog","yo"], inst: "stuff"},{row: ["k","k","k","k","rs","yo","k2tog","k","k","k","k","k","yo","re","k2tog","yo","k2tog","yo"], inst: "cooooooool"},{row: ["k","k","k","k","rs","k","k2tog","k","k","k","k","yo","yo","re","k2tog","yo","k2tog","yo"], inst: "very good row"},{row: ["k","k","k","k","rs","yo","k2tog","k","k2tog","k","k","k2tog","yo","re","k2tog","yo","k2tog","yo"], inst: "Final instructions!"}];
 var emptyArray = ["empty","empty","empty","empty","empty",'empty',"empty","empty",'empty','empty',"empty","empty","empty","empty","empty",'empty',"empty","empty",'empty','empty'];
 var width = $(window).width();
+
+//caching selectors
+var lastItem = $('#last');
+var currentItem = $('#current');
+var nextItem = $('#next');
+var rowCount = $('#rowCount');
     
 var last = emptyArray;
 var current = testValues[0].row;            //defining initial values of rows
@@ -25,11 +31,11 @@ var currentWidth = width * 0.9;
 
 //Drawing the three grids, "Last, Current, and Next"
 function drawLast() {
-    $('#last').empty();
+    lastItem.empty();
     if(last[0] === "empty") {
-        $('#last').addClass("empty");
+        lastItem.addClass("empty");
     }   else {
-        if ($('#last').hasClass('empty')) $('#last').removeClass('empty');
+        if (lastItem.hasClass('empty')) lastItem.removeClass('empty');
     }
     for (var i = 0; i < countLast; i++) {
         $('#last').addP(last[i]);
@@ -38,22 +44,22 @@ function drawLast() {
     $('#last img').css('width', (nonCurrentWidth / countLast)*.96);
 }
 function drawCurrent() {
-    $('#current').empty();
+    currentItem.empty();
     for (var i = 0; i < countCurrent; i++) {
-        $('#current').addP(current[i]);
+        currentItem.addP(current[i]);
     }
     $('#current img').css('height', (currentWidth / countCurrent)*.96);
     $('#current img').css('width', (currentWidth / countCurrent)*.96);
 }
 function drawNext() {
-    $('#next').empty();
+    nextItem.empty();
     if(next[0] === "empty") {
-        $('#next').addClass("empty");
+        nextItem.addClass("empty");
     }   else {
-        if ($('#next').hasClass('empty')) $('#next').removeClass('empty');
+        if (nextItem.hasClass('empty')) nextItem.removeClass('empty');
     }
     for (var i = 0; i < countNext; i++) {
-        $('#next').addP(next[i]);
+        nextItem.addP(next[i]);
     }
     $('#next img').css('height', (nonCurrentWidth / countNext)*.96);
     $('#next img').css('width', (nonCurrentWidth / countNext)*.96);
@@ -99,7 +105,7 @@ function moveFocus(amount) {
     drawNext();
     
     currentInstructions = testValues[currentRow - 1].inst;
-    $('#rowCount').text(currentRow);
+    rowCount.text(currentRow);
     $('#translation p').text(currentInstructions);
 }
 
@@ -121,16 +127,16 @@ $(document).ready(function(){
     drawNext();
     
     //placing the Counter    
-    $('#rowCount').css('height', width / 10);
-    $('#rowCount').css('width', width / 10);
-    $('#rowCount').css('margin-top', 0 - (width / 14));
-    $('#rowCount').css('margin-left', width / 20);
-    $('#rowCount').css('font-size', width / 10);
+    rowCount.css('height', width / 10);
+    rowCount.css('width', width / 10);
+    rowCount.css('margin-top', 0 - (width / 14));
+    rowCount.css('margin-left', width / 20);
+    rowCount.css('font-size', width / 10);
     
     //placing the nav buttons
     $('#nav img').css('height', width / 17);
     $('#nav img').css('width', width / 17);
-    $('#rowCount').text(currentRow);
+    rowCount.text(currentRow);
     
     $('#translation p').text(currentInstructions);
     
