@@ -1,16 +1,17 @@
 //defining variables
-var testValues = [["k3tog","k2tog","p2tog","yo","rs","yo","k2tog","k","k","ns","ssk","ssp","p2tog","re","k2tog","yo","sk2p","yo"],["k","k","yo","k","rs","yo","k","k","k","k","k","k","yo","re","k2tog","yo","k2tog","yo"],["k","k","k","k","rs","yo","k2tog","k","k","k","k","k","yo","re","k2tog","yo","k2tog","yo"],["k","k","k","k","rs","k","k2tog","k","k","k","k","yo","yo","re","k2tog","yo","k2tog","yo"],["k","k","k","k","rs","yo","k2tog","k","k2tog","k","k","k2tog","yo","re","k2tog","yo","k2tog","yo"]];
+var testValues = [{row: ["k3tog","k2tog","p2tog","yo","rs","yo","k2tog","k","k","ns","ssk","ssp","p2tog","re","k2tog","yo","sk2p","yo"], inst: "Green blue stuff"},{row: ["k","k","yo","k","rs","yo","k","k","k","k","k","k","yo","re","k2tog","yo","k2tog","yo"], inst: "stuff"},{row: ["k","k","k","k","rs","yo","k2tog","k","k","k","k","k","yo","re","k2tog","yo","k2tog","yo"], inst: "cooooooool"},{row: ["k","k","k","k","rs","k","k2tog","k","k","k","k","yo","yo","re","k2tog","yo","k2tog","yo"], inst: "very good row"},{row: ["k","k","k","k","rs","yo","k2tog","k","k2tog","k","k","k2tog","yo","re","k2tog","yo","k2tog","yo"], inst: "Final instructions!"}];
 var emptyArray = ["empty","empty","empty","empty","empty",'empty',"empty","empty",'empty','empty',"empty","empty","empty","empty","empty",'empty',"empty","empty",'empty','empty'];
 var width = $(window).width();
     
 var last = emptyArray;
-var current = testValues[0];            //defining initial values of rows
-var next = testValues[1];
+var current = testValues[0].row;            //defining initial values of rows
+var next = testValues[1].row;
 var currentRow = 1;
     
 var countLast = last.length;
 var countCurrent = current.length;      //these are the length of the grid rows in number of stitches
 var countNext = next.length;
+var currentInstructions = testValues[currentRow - 1].inst;
 
 var nonCurrentWidth = width * 0.7;      //defining the max widths of the individual rows
 var currentWidth = width * 0.9;
@@ -24,7 +25,7 @@ var currentWidth = width * 0.9;
 
 //Drawing the three grids, "Last, Current, and Next"
 function drawLast() {
-    $('#last').empty()
+    $('#last').empty();
     if(last[0] === "empty") {
         $('#last').addClass("empty");
     }   else {
@@ -35,9 +36,9 @@ function drawLast() {
     }
     $('#last img').css('height', (nonCurrentWidth / countLast)*.96);
     $('#last img').css('width', (nonCurrentWidth / countLast)*.96);
-};
+}
 function drawCurrent() {
-    $('#current').empty()
+    $('#current').empty();
     for (var i = 0; i < countCurrent; i++) {
         $('#current').addP(current[i]);
     }
@@ -45,7 +46,7 @@ function drawCurrent() {
     $('#current img').css('width', (currentWidth / countCurrent)*.96);
 }
 function drawNext() {
-    $('#next').empty()
+    $('#next').empty();
     if(next[0] === "empty") {
         $('#next').addClass("empty");
     }   else {
@@ -68,24 +69,24 @@ function moveFocus(amount) {
         currentRow -= amount;
         return;
     } else if (currentRow < 1) {
-        alert("You're already on the first row!")
+        alert("You're already on the first row!");
         currentRow -= amount;
     }
     
     if (currentRow === 1) {
         last = emptyArray;
     } else {
-        last = testValues[currentRow-2];
+        last = testValues[currentRow-2].row;
     }
     console.log(last);
     
-    current = testValues[currentRow-1];
+    current = testValues[currentRow-1].row;
     console.log(current);
     
     if (currentRow === testValues.length) {
         next = emptyArray;
     } else {
-        next = testValues[currentRow];
+        next = testValues[currentRow].row;
     }
     console.log(next);
     
@@ -97,7 +98,9 @@ function moveFocus(amount) {
     drawCurrent();
     drawNext();
     
+    currentInstructions = testValues[currentRow - 1].inst;
     $('#rowCount').text(currentRow);
+    $('#translation p').text(currentInstructions);
 }
 
 $(window).resize(function(){
@@ -128,6 +131,8 @@ $(document).ready(function(){
     $('#nav img').css('height', width / 17);
     $('#nav img').css('width', width / 17);
     $('#rowCount').text(currentRow);
+    
+    $('#translation p').text(currentInstructions);
     
     $(window).resize();
 });
