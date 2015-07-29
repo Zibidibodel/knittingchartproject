@@ -14,6 +14,7 @@ body {
 #current  img{
     display: inline-block;
     margin-top: 1.25em;
+    background-color: #CC9900;
 }
 
 #last img{
@@ -29,6 +30,7 @@ body {
 img {
     background-color: #E6E6E6;
 }
+
 
 #nav {
     float: none;

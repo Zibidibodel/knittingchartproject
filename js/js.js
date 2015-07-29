@@ -1,5 +1,28 @@
 //defining variables
-var testValues = [{row: ["k3tog","k2tog","p2tog","yo","rs","yo","k2tog","k","k","ns","ssk","ssp","p2tog","re","k2tog","yo","sk2p","yo"], inst: "Green blue stuff"},{row: ["k","k","yo","k","rs","yo","k","k","k","k","k","k","yo","re","k2tog","yo","k2tog","yo"], inst: "stuff"},{row: ["k","k","k","k","rs","yo","k2tog","k","k","k","k","k","yo","re","k2tog","yo","k2tog","yo"], inst: "cooooooool"},{row: ["k","k","k","k","rs","k","k2tog","k","k","k","k","yo","yo","re","k2tog","yo","k2tog","yo"], inst: "very good row"},{row: ["k","k","k","k","rs","yo","k2tog","k","k2tog","k","k","k2tog","yo","re","k2tog","yo","k2tog","yo"], inst: "Final instructions!"}];
+var testValues = [{
+    row: ['k','k','p','p','k','k','p','p','k','k','p','p','k','k','p','p','k','k','p','p','k'],
+    inst: "[k2, p2] 5 times, k1"
+},
+{
+    row: ['p','p','k','k','p','p','k','k','p','p','k','k','p','p','k','k','p','p','k','k','p'],
+    inst: "[p2, k2] 5 times, p1"
+},
+{
+    row: ['k','k','p','p','k','k','p','p','k','k','p','p','k','k','p','p','k','k','p','p','k'],
+    inst: "[k2, p2] 5 times, k1"
+},
+{
+    row: ['p','p','k','k','p','p','k','k','p','p','k','k','p','p','k','k','p','p','k','k','p'],
+    inst: "[p2, k2] 5 times, p1"
+},
+{
+    row: ['k','k','p','p','k','k','p','p','k','k','p','p','k','k','p','p','k','k','p','p','k'],
+    inst: "[k2, p2] 5 times, k1"
+},
+{
+    row: ['p','p','k','k','p','p','k','k','p','p','k','k','p','p','k','k','p','p','k','k','p'],
+    inst: "[p2, k2] 5 times, p1"
+}];
 var emptyArray = ["empty","empty","empty","empty","empty",'empty',"empty","empty",'empty','empty',"empty","empty","empty","empty","empty",'empty',"empty","empty",'empty','empty'];
 var width = $(window).width();
 
