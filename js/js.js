@@ -92,7 +92,18 @@ function drawNext() {
 function moveFocus(amount) {
     console.log("initiating move of" + amount);
     currentRow += amount;
+    updateAll();
+}
+
+//function that instantly shifts the current row to the value presented in the "target" argument
+function focusOn (target) {
+    console.log("changing focus to row " + target);
+    currentRow = target;
+    updateAll();
+}
     
+//function that updates all values (usually applied after changing currentRow    
+function updateAll() {
     if (currentRow > testValues.length) {
         alert("You're already on the last row!");
         currentRow -= amount;
@@ -174,4 +185,9 @@ $("#fwd").on("click", function() {
 //when someone clicks on the "back" image, it moves the current row back 1
 $("#back").on("click", function() {
     moveFocus(-1);
+});
+
+//when someone clicks on the "home" image, it moves back to the first row
+$("#reset").on("click", function() {
+    focusOn(1);
 });
