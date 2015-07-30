@@ -92,7 +92,7 @@ function drawNext() {
 function moveFocus(amount) {
     console.log("initiating move of" + amount);
     currentRow += amount;
-    updateAll();
+    updateAll(amount);
 }
 
 //function that instantly shifts the current row to the value presented in the "target" argument
@@ -104,6 +104,7 @@ function focusOn (target) {
     
 //function that updates all values (usually applied after changing currentRow    
 function updateAll() {
+    var amount = arguments[0];
     if (currentRow > testValues.length) {
         alert("You're already on the last row!");
         currentRow -= amount;
