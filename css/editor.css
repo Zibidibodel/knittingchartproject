@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+body {
+    background-color: #EBC299;
+}
+
+#editor {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#stitchSelectors  img{
+    display: inline-block;
+    margin-top: 1.25em;
+    background-color: #CC9900;
+}
+
+img {
+    background-color: #E6E6E6;
+}
+
+
+#nav {
+    float: none;
+    text-align: center;
+    width: 100%;
+}
+
+#rowCount {
+    float: left;
+    background-color: #E6E6E6;
+    text-align: center;
+    border-color: #000;
+    border-style: solid;
+}
+
+#nav img {
+    margin: 0.1% 1%;
+    margin-top: 7em;
+}
+
+#translation {
+    text-align: center;
+}
+
+#translation input {
+    font-size: 3em;
+    font-family: sans-serif;
+}
+
+.empty img {
+    background-color: #EBC299;
+}
+
+.centered {
+    text-align: center;
+}
